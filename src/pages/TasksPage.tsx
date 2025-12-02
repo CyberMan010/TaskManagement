@@ -1,6 +1,7 @@
 import type React from "react";
 import { useMemo, useState } from "react";
 import { Sidebar } from "../components/layout/Sidebar";
+import { TopNavbar } from "../components/layout/TopNavbar";
 import { SummaryCards } from "../components/tasks/SummaryCards";
 import { KanbanColumn } from "../components/tasks/KanbanColumn";
 import { NewTaskModal } from "../components/tasks/NewTaskModal";
@@ -95,6 +96,7 @@ export const TasksPage: React.FC = () => {
       <Sidebar active="tasks" />
 
       <main className="flex-1 px-4 py-4 lg:px-8 lg:py-6">
+        <TopNavbar />
         <header className="mb-4 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-semibold text-slate-900">المهام</h1>
