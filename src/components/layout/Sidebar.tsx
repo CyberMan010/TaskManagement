@@ -38,7 +38,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
           <p className="text-lg font-family-Inter font-bold text-[#C9B57A]">TechTeek</p>
           <p className="text-xs text-[#BFC6D5]">نظام إدارة المشاريع</p>
         </div>
-        <div className="h-12 w-12 rounded-full bg-[#C9B57A]" />
+        <div className="h-10 w-10 rounded-full bg-[#C9B57A]" />
       </div>
 
       {/* Tab Buttons */}

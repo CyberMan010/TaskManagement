@@ -24,7 +24,12 @@ module.exports = {
       }
     }
   },
+  fontFamily: {
+    'Tajawal': ['Tajawal', 'sans-serif'],
+    'Inter': ['Inter', 'sans-serif']
+  },
   plugins: []
 };
+
 
 
