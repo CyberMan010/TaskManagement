@@ -8,11 +8,11 @@ export const Sidebar: React.FC<SidebarProps> = () => {
   return (
     <aside className="hidden lg:flex w-64 bg-sidebar text-slate-100 flex-col py-6 px-4 space-y-6">
       <div className="flex items-center gap-3 px-2">
-        <div className="h-10 w-10 rounded-full bg-amber-300" />
         <div>
-          <p className="text-sm text-slate-400">TechTeek</p>
-          <p className="text-xs text-slate-500">نظام إدارة المشاريع</p>
+          <p className="text-sm text-logo">TechTeek</p>
+          <p className="text-xs text-[#BFC6D5]">نظام إدارة المشاريع</p>
         </div>
+        <div className="h-10 w-10 rounded-full bg-logo order-1" />
       </div>
 
       <nav className="flex-1 space-y-4 text-sm">

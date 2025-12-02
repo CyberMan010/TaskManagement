@@ -8,7 +8,8 @@ module.exports = {
           DEFAULT: "#1D4ED8",
           dark: "#1E293B"
         },
-        sidebar: "#020617",
+        logo: "#C9B57A",
+        sidebar: "#0F1B31",
         card: "#FFFFFF",
         muted: "#64748B",
         success: "#16A34A",
