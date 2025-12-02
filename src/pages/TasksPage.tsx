@@ -8,6 +8,7 @@ import { NewTaskModal } from "../components/tasks/NewTaskModal";
 import switch1 from "../Taskmanageimgs/swwithc.svg";
 import switch2 from "../Taskmanageimgs/switch2.svg";
 import adding from "../Taskmanageimgs/adding.svg";
+import filterIcon from "../Taskmanageimgs/filter.svg";
 import type { Task, TaskStatus } from "../types/task";
 
 const initialTasks: Task[] = [
@@ -67,6 +68,41 @@ const viewOptions = [
 ] as const;
 
 type ViewMode = (typeof viewOptions)[number]["id"];
+
+const filterOptions = [
+  { id: "mine", label: "مهامي", type: "user" },
+  { id: "department", label: "القسم", type: "filter" },
+  { id: "priority", label: "الأولوية", type: "filter" },
+  { id: "status", label: "الحالة", type: "filter" },
+  { id: "project", label: "المشروع", type: "filter" },
+  { id: "owner", label: "المسؤول", type: "filter" }
+] as const;
+
+const UserOutlineIcon: React.FC = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M15 16.6667V15a3.33333 3.33333 0 00-3.3333-3.3333H8.33333A3.33333 3.33333 0 005 15v1.6667"
+      stroke="#020817"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M10 9.16667c1.3807 0 2.5-1.11929 2.5-2.5 0-1.38071-1.1193-2.5-2.5-2.5s-2.5 1.11929-2.5 2.5c0 1.38071 1.1193 2.5 2.5 2.5z"
+      stroke="#020817"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 export const TasksPage: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
@@ -163,12 +199,21 @@ export const TasksPage: React.FC = () => {
         <SummaryCards tasks={tasks} />
 
         <section className="space-y-3 mb-4">
-          <div className="flex flex-wrap gap-2 text-xs">
-            <button className="rounded-full bg-slate-900 text-white px-3 py-1">إظهار الكل</button>
-            <button className="rounded-full bg-white px-3 py-1 text-muted border border-slate-200">الأقسام</button>
-            <button className="rounded-full bg-white px-3 py-1 text-muted border border-slate-200">الأولوية</button>
-            <button className="rounded-full bg-white px-3 py-1 text-muted border border-slate-200">الحالة</button>
-            <button className="rounded-full bg-white px-3 py-1 text-muted border border-slate-200">المشروع</button>
+          <div className="flex flex-wrap gap-4 text-sm">
+            {filterOptions.map(option => (
+              <button
+                key={option.id}
+                type="button"
+                className="flex  items-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2 text-slate-700 shadow-sm transition hover:border-slate-300 font-bold"
+              >
+                {option.type === "user" ? (
+                  <UserOutlineIcon />
+                ) : (
+                  <img src={filterIcon} alt="رمز التصفية" className="h-4 w-4" />
+                )}
+                <span>{option.label}</span>
+              </button>
+            ))}
           </div>
         </section>
 
