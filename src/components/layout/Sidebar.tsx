@@ -42,18 +42,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
       </div>
 
       {/* Tab Buttons */}
-      <div className="flex gap-2 mb-4">
-        <button className="flex-1 rounded-lg bg-primary text-white px-4 py-2.5 text-sm font-medium">
+      <div className="flex gap-0 mb-4 bg-transparent border border-[#288EC7] rounded-xl p-1">
+        <button className="flex-1 rounded-[12px] bg-[#288EC7] text-[#16243D] px-4 py-2 text-sm font-medium transition-all drop-shadow-sm shadow-sm">
           إدارة المشاريع
         </button>
-        <button className="flex-1 rounded-lg border border-primary/30 text-primary px-4 py-2.5 text-sm font-medium hover:bg-primary/10">
-          إدارة المذاكر
+        <button className="flex-1 rounded-full text-[#288EC7D9] px-4 py-2 text-sm font-medium hover:bg-primary/5 transition-all">
+          إدارة التذاكر
         </button>
       </div>
 
       {/* Main Menu */}
       <nav className="flex-1 space-y-0.5 text-sm">
-        {menuItems.map(item => (
+        {menuItems.map(item => (    
           <button
             key={item.id}
             className={`w-full flex items-center justify-between py-2.5 rounded-lg text-right transition-colors ${
@@ -81,7 +81,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
 
         {/* Settings Section */}
         <div className="pt-4">
-          <p className="pb-2 text-xs text-primary font-medium" style={{ paddingLeft: '12px' }}>الإعدادات العامة</p>
+          <p className="pb-2 text-xs text-[#288EC7D9] font-medium" style={{ paddingLeft: '12px' }}>الإعدادات العامة</p>
           {settingsItems.map(item => (
             <button
               key={item.id}
