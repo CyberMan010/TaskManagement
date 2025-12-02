@@ -92,22 +92,18 @@ export const TasksPage: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-100 text-slate-900" dir="rtl">
+    <div className="flex min-h-screen bg-white text-slate-900" dir="rtl">
       <Sidebar active="tasks" />
 
       <main className="flex-1 px-4 py-4 lg:px-8 lg:py-6">
         <TopNavbar />
+       
         <header className="mb-4 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-semibold text-slate-900">المهام</h1>
             <p className="text-xs text-muted mt-1">إدارة وتتبع جميع المهام</p>
           </div>
-          <button className="relative rounded-full bg-white p-2 shadow-soft border border-slate-100">
-            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] text-white">
-              3
-            </span>
-            🔔
-          </button>
+          
         </header>
 
         <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
