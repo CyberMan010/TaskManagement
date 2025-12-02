@@ -35,8 +35,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
       {/* Header */}
       <div className="flex items-center justify-between mb-5">
         <div className="flex-1">
-          <p className="text-base font-medium text-[#C9B57A]">TechTeek</p>
-          <p className="text-xs text-slate-400">نظام إدارة المشاريع</p>
+          <p className="text-lg font-family-Inter font-bold text-[#C9B57A]">TechTeek</p>
+          <p className="text-xs text-[#BFC6D5]">نظام إدارة المشاريع</p>
         </div>
         <div className="h-12 w-12 rounded-full bg-[#C9B57A]" />
       </div>
@@ -74,7 +74,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
             <img 
               src={active === item.id ? sidebarIcons.whiteArrowSelected : sidebarIcons.arrow} 
               alt="arrow" 
-              className="w-3 h-3"
+              className="w-4 h-4"
             />
           </button>
         ))}
@@ -99,7 +99,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
               <img 
                 src={sidebarIcons.arrow} 
                 alt="arrow" 
-                className="w-3 h-3"
+                className="w-4 h-4"
               />
             </button>
           ))}
