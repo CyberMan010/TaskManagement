@@ -53,7 +53,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
 
       {/* Main Menu */}
       <nav className="flex-1 space-y-0.5 text-sm">
-        {menuItems.map(item => (    
+        {menuItems.map(item => (
           <button
             key={item.id}
             className={`w-full flex items-center justify-between py-2.5 rounded-lg text-right transition-colors ${
@@ -63,18 +63,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
             }`}
             style={{ paddingLeft: '12px', paddingRight: '12px' }}
           >
-            <span className="flex items-center gap-3">
+            <span className="flex items-center gap-2">
               <img 
-                src={active === item.id ? sidebarIcons.whiteArrowSelected : sidebarIcons.arrow} 
-                alt="arrow" 
-                className="w-3 h-3"
+                src={sidebarIcons[item.icon]} 
+                alt={item.label} 
+                className="w-5 h-5"
               />
               <span className="text-sm">{item.label}</span>
             </span>
             <img 
-              src={sidebarIcons[item.icon]} 
-              alt={item.label} 
-              className="w-5 h-5"
+              src={active === item.id ? sidebarIcons.whiteArrowSelected : sidebarIcons.arrow} 
+              alt="arrow" 
+              className="w-3 h-3"
             />
           </button>
         ))}
@@ -88,18 +88,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ active = "tasks" }) => {
               className="w-full flex items-center justify-between py-2.5 rounded-lg text-right text-slate-300 hover:bg-[#243041] hover:text-white transition-colors"
               style={{ paddingLeft: '12px', paddingRight: '12px' }}
             >
-              <span className="flex items-center gap-3">
+              <span className="flex items-center gap-2">
                 <img 
-                  src={sidebarIcons.arrow} 
-                  alt="arrow" 
-                  className="w-3 h-3"
+                  src={sidebarIcons[item.icon]} 
+                  alt={item.label} 
+                  className="w-5 h-5"
                 />
                 <span className="text-sm">{item.label}</span>
               </span>
               <img 
-                src={sidebarIcons[item.icon]} 
-                alt={item.label} 
-                className="w-5 h-5"
+                src={sidebarIcons.arrow} 
+                alt="arrow" 
+                className="w-3 h-3"
               />
             </button>
           ))}
