@@ -67,13 +67,13 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
 
   return (
     <div
-      className="rounded-xl bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] cursor-pointer hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow border border-slate-100"
+      className="w-full max-w-[302px] h-[230px] rounded-lg bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] cursor-pointer hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow border border-slate-100"
       draggable
       dir="rtl"
     >
       {/* Header with priority badge and three dots */}
       <div className="flex items-start justify-between mb-3">
-        <span className={`rounded-md px-3 py-1 text-xs font-semibold ${priorityColor[task.priority]}`}>
+        <span className={`rounded-md px-3 py-1 text-xs font-semibold font-Tajawal ${priorityColor[task.priority]}`}>
           {priorityLabel[task.priority]}
         </span>
         <button
@@ -88,28 +88,28 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
       </div>
 
       {/* Title */}
-      <h3 className="mb-2 font-bold text-slate-900 text-[15px] leading-snug line-clamp-2">
+      <h3 className="mb-2 font-bold text-slate-900 text-[15px] leading-snug line-clamp-2 font-Tajawal">
         {task.title}
       </h3>
 
       {/* Description */}
-      <p className="mb-2 text-[13px] text-slate-500 leading-relaxed line-clamp-2">
+      <p className="mb-2 text-[13px] text-slate-500 leading-relaxed line-clamp-2 font-Inter">
         {task.description}
       </p>
 
       {/* Category/Project */}
-      <p className="mb-3 text-[12px] text-slate-400 line-clamp-1">
+      <p className="mb-3 text-[12px] text-slate-400 line-clamp-1 font-Inter">
         {task.project}
       </p>
 
       {/* Date with calendar icon */}
-      <div className="flex items-center justify-end gap-1.5 text-slate-500 text-[13px] mb-4">
+      <div className="flex items-center justify-end gap-1.5 text-slate-500 text-[13px] mb-4 font-Inter">
         <span>{task.dueDate}</span>
         <CalendarIcon />
       </div>
 
       {/* Footer with icons and avatar */}
-      <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+      <div className="flex items-center justify-between pt-3 border-t border-slate-100 font-Inter">
         <div className="flex items-center gap-3">
           {/* Comment count */}
           <div className="flex items-center gap-1 text-slate-400">
@@ -124,7 +124,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         </div>
 
         {/* Avatar with initials */}
-        <div className="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-white text-xs font-semibold">
+        <div className="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-white text-xs font-semibold font-Tajawal">
           {task.assignee.split(' ').map(n => n.charAt(0)).join('')}
         </div>
       </div>

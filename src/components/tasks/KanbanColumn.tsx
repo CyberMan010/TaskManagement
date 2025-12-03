@@ -30,10 +30,10 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ title, status, tasks
     };
 
   const headerColors: Record<TaskStatus, string> = {
-    todo: "bg-[#4A90E2]",
-    in_progress: "bg-[#F4A423]",
-    completed: "bg-[#4CAF50]",
-    on_hold: "bg-[#EB4C60]"
+    todo: "bg-[#3B82F6]",
+    in_progress: "bg-[#F59E0B]",
+    completed: "bg-[#22C55E]",
+    on_hold: "bg-[#EF4444]"
   };
 
   return (
@@ -42,14 +42,13 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ title, status, tasks
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      {/* Header with white background and colored bottom bar */}
-      <div className="mb-4 bg-white rounded-t-xl overflow-hidden shadow-sm">
-        {/* Colored bar - full width, no padding */}
-        <div className={`h-1.5 w-full ${headerColors[status]}`} />
+      {/* Header with white background and colored top bar - Figma specs: 302x57px, 8px radius, 4px top border */}
+      <div className="mb-4 w-full max-w-[302px] h-[57px] bg-[#F1F5F980] rounded-lg overflow-hidden shadow-sm">
+        {/* Colored bar at top - 4px height */}
+        <div className={`h-1 w-full ${headerColors[status]}`} />
         {/* Title and count */}
-        <div className="flex items-center justify-between px-4 py-3">
-          <h2 className="text-base font-semibold text-slate-900">{title}</h2>
-          <span className="rounded-full bg-white border border-slate-200 px-2.5 py-1 text-xs text-slate-600 font-medium">{tasks.length}</span>
+        <div className="flex items-center justify-between px-4 h-[calc(100%-4px)]">
+          <h2 className="text-lg font-bold text-slate-900 font-Tajawal">{title}</h2>
         </div>
       </div>
 

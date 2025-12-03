@@ -52,19 +52,18 @@ export const SummaryCards: React.FC<SummaryCardsProps> = ({ tasks }) => {
       {items.map(key => (
         <div
           key={key}
-          className="flex items-center justify-between rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-[0px_1px_3px_rgba(15,23,42,0.08)]"
+          className="flex items-center justify-between rounded-lg border border-slate-100 bg-white px-4 py-3 shadow-[0px_1px_3px_rgba(15,23,42,0.08)]"
+          style={{ height: "86px" }}
         >
           <div className="flex items-center gap-3">
             <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${statusMeta[key].badge}`}>
               <img src={statusMeta[key].icon} alt={statusMeta[key].label} className="h-5 w-5" />
             </div>
             <div>
-            <p className="text-sm  text-gray-500">{statusMeta[key].label}</p>
-          <p className="text-2xl font-semibold text-slate-900">{counts[key]}</p>
-
+              <p className="text-sm text-gray-500 font-Tajawal">{statusMeta[key].label}</p>
+              <p className="text-2xl font-semibold text-slate-900 font-Tajawal">{counts[key]}</p>
             </div>
           </div>
-          
         </div>
       ))}
     </div>

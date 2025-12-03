@@ -21,12 +21,12 @@ module.exports = {
       },
       borderRadius: {
         xl: "1rem"
+      },
+      fontFamily: {
+        'Tajawal': ['Tajawal', 'sans-serif'],
+        'Inter': ['Inter', 'sans-serif']
       }
     }
-  },
-  fontFamily: {
-    'Tajawal': ['Tajawal', 'sans-serif'],
-    'Inter': ['Inter', 'sans-serif']
   },
   plugins: []
 };

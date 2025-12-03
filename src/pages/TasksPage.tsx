@@ -142,23 +142,21 @@ export const TasksPage: React.FC = () => {
     <div className="flex min-h-screen bg-white text-slate-900 " dir="rtl">
       <Sidebar active="tasks" />
 
-      <main className="flex-1 ">
+      <main className="flex-1">
+       
       <header className="py-4 ">
         <TopNavbar />
-
-
         </header>
-       
-        <div className="px-4 lg:px-8 ">
+        <div className="px-4 sm:px-8 md:px-12 lg:px-24 xl:px-[160px]">
 
 
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6 gap-4">
           <div>
-            <h1 className="text-3xl font-semibold text-slate-900 font-Tajawal">المهام</h1>
-            <p className="text-xs text-muted mt-1">إدارة وتتبع جميع المهام</p>
+            <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 font-Tajawal mb-1 lg:mb-2">المهام</h1>
+            <p className="text-sm lg:text-base font-normal text-muted font-Inter">إدارة وتتبع جميع المهام</p>
           </div>
 
-        <div className="flex flex-wrap items-center gap-2 mb-4 px-2">
+        <div className="flex flex-wrap items-center gap-2">
             <div className="flex items-center gap-1 rounded-lg bg-[#F1F5F9] p-1.5 shadow-inner">
               {viewOptions.map(option => (
                 <button
@@ -166,24 +164,24 @@ export const TasksPage: React.FC = () => {
                   type="button"
                   aria-pressed={viewMode === option.id}
                   onClick={() => setViewMode(option.id)}
-                  className={`flex items-center gap-2 rounded-md px-4 py-1.5 text-sm font-medium transition ${
+                  className={`flex items-center gap-2 rounded-md px-3 lg:px-4 py-1.5 text-xs lg:text-sm font-medium transition font-Tajawal ${
                     viewMode === option.id
                       ? "bg-white text-slate-900 shadow-sm"
                       : "text-slate-500"
                   }`}
                 >
-                  <img src={option.icon} alt={option.label} className="h-4 w-4" />
-                  <span>{option.label}</span>
+                  <img src={option.icon} alt={option.label} className="h-3 lg:h-4 w-3 lg:w-4" />
+                  <span className="hidden sm:inline">{option.label}</span>
                 </button>
               ))}
             </div>
-          <div className="flex flex-wrap gap-2 ">
+          <div className="flex flex-wrap gap-2">
             <button
               type="button"
               onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-2 rounded-md bg-[#182B49] px-4 py-3 text-sm text-white shadow-soft hover:bg-primary/90"
+              className="inline-flex items-center gap-2 rounded-md bg-[#182B49] px-3 lg:px-4 py-2 lg:py-3 text-xs lg:text-sm text-white shadow-soft hover:bg-primary/90 font-Tajawal"
             >
-              <span className="text-lg"><img src={adding} alt="adding" className="w-4 h-4" /></span>
+              <img src={adding} alt="adding" className="w-3 lg:w-4 h-3 lg:h-4" />
               <span>مهمة جديدة</span>
             </button>
           </div>
@@ -198,26 +196,26 @@ export const TasksPage: React.FC = () => {
 
         <SummaryCards tasks={tasks} />
 
-        <section className="space-y-3 mb-4">
-          <div className="flex flex-wrap gap-4 text-sm">
+        <section className="space-y-3 mb-6">
+          <div className="flex flex-wrap gap-2 lg:gap-4 text-xs lg:text-sm">
             {filterOptions.map(option => (
               <button
                 key={option.id}
                 type="button"
-                className="flex  items-center gap-2 rounded-md border border-slate-200 bg-white px-4 py-2 text-slate-700 shadow-sm transition hover:border-slate-300 font-bold"
+                className="flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 lg:px-4 py-1.5 lg:py-2 text-slate-700 shadow-sm transition hover:border-slate-300 font-bold font-Tajawal"
               >
                 {option.type === "user" ? (
                   <UserOutlineIcon />
                 ) : (
-                  <img src={filterIcon} alt="رمز التصفية" className="h-4 w-4" />
+                  <img src={filterIcon} alt="رمز التصفية" className="h-3 lg:h-4 w-3 lg:w-4" />
                 )}
-                <span>{option.label}</span>
+                <span className="whitespace-nowrap">{option.label}</span>
               </button>
             ))}
           </div>
         </section>
 
-        <section className="grid gap-3 xl:gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <section className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <KanbanColumn title="للتنفيذ" status="todo" tasks={grouped.todo} onDropTask={handleDropTask} />
           <KanbanColumn title="قيد التنفيذ" status="in_progress" tasks={grouped.in_progress} onDropTask={handleDropTask} />
           <KanbanColumn title="مكتملة" status="completed" tasks={grouped.completed} onDropTask={handleDropTask} />
