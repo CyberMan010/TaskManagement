@@ -47,6 +47,12 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     low: "bg-[#D1FAE5] text-[#16A34A]"
   };
 
+  // Format date from YYYY-MM-DD to DD/MM/YYYY
+  const formatDate = (dateStr: string): string => {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div
       className="relative w-full rounded-lg bg-white p-5 shadow-[0_1px_2px_rgba(0,0,0,0.05)] cursor-pointer hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] transition-all border border-slate-200"
@@ -92,8 +98,8 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         <div className="flex items-center gap-3">
           {/* Date with calendar icon */}
           <div className="flex items-center gap-1.5 text-slate-500 text-[13px] font-Inter">
-            <span>{task.dueDate}</span>
             <CalendarIcon />
+            <span>{formatDate(task.dueDate)}</span>
           </div>
 
          
