@@ -30,23 +30,31 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({ title, status, tasks
     };
 
   const headerColors: Record<TaskStatus, string> = {
-    todo: "border-sky-500",
-    in_progress: "border-amber-500",
-    completed: "border-emerald-500",
-    on_hold: "border-rose-500"
+    todo: "bg-[#4A90E2]",
+    in_progress: "bg-[#F4A423]",
+    completed: "bg-[#4CAF50]",
+    on_hold: "bg-[#EB4C60]"
   };
 
   return (
     <div
-      className="flex h-full min-h-[260px] flex-col rounded-xl bg-slate-50 border border-slate-100"
+      className="flex h-full min-h-[260px] flex-col"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
-      <div className={`flex items-center justify-between border-b px-3 py-2 text-sm font-medium ${headerColors[status]}`}>
-        <span>{title}</span>
-        <span className="rounded-full bg-white px-2 py-0.5 text-xs text-muted shadow-sm">{tasks.length}</span>
+      {/* Header with white background and colored bottom bar */}
+      <div className="mb-4 bg-white rounded-t-xl overflow-hidden shadow-sm">
+        {/* Colored bar - full width, no padding */}
+        <div className={`h-1.5 w-full ${headerColors[status]}`} />
+        {/* Title and count */}
+        <div className="flex items-center justify-between px-4 py-3">
+          <h2 className="text-base font-semibold text-slate-900">{title}</h2>
+          <span className="rounded-full bg-white border border-slate-200 px-2.5 py-1 text-xs text-slate-600 font-medium">{tasks.length}</span>
+        </div>
       </div>
-      <div className="flex-1 overflow-y-auto px-2 py-2">
+
+      {/* Cards list - no container background */}
+      <div className="flex-1 overflow-y-auto space-y-3">
         {tasks.map(task => (
           <div key={task.id} onDragStart={handleDragStart(task.id)}>
             <TaskCard task={task} />

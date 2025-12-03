@@ -5,6 +5,14 @@ interface TaskCardProps {
   task: Task;
 }
 
+const MenuDotsIcon: React.FC = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="10" cy="4" r="1.5" fill="#94A3B8" />
+    <circle cx="10" cy="10" r="1.5" fill="#94A3B8" />
+    <circle cx="10" cy="16" r="1.5" fill="#94A3B8" />
+  </svg>
+);
+
 const CalendarIcon: React.FC = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -20,6 +28,18 @@ const CalendarIcon: React.FC = () => (
   </svg>
 );
 
+const CommentIcon: React.FC = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M14 10C14 10.3536 13.8595 10.6928 13.6095 10.9428C13.3594 11.1929 13.0203 11.3333 12.6667 11.3333H4.66667L2 14V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14048 2.97971 2 3.33333 2H12.6667C13.0203 2 13.3594 2.14048 13.6095 2.39052C13.8595 2.64057 14 2.97971 14 3.33333V10Z"
+      stroke="currentColor"
+      strokeWidth="1.33333"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const AttachmentIcon: React.FC = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -32,14 +52,6 @@ const AttachmentIcon: React.FC = () => (
   </svg>
 );
 
-const MenuDotsIcon: React.FC = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="8" cy="3" r="1" fill="currentColor" />
-    <circle cx="8" cy="8" r="1" fill="currentColor" />
-    <circle cx="8" cy="13" r="1" fill="currentColor" />
-  </svg>
-);
-
 export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   const priorityLabel: Record<Task["priority"], string> = {
     high: "عالي",
@@ -48,75 +60,74 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
   };
 
   const priorityColor: Record<Task["priority"], string> = {
-    high: "bg-red-50 text-red-600",
-    medium: "bg-amber-50 text-amber-600",
-    low: "bg-emerald-50 text-emerald-600"
-  };
-
-  const statusAccent: Record<Task["status"], string> = {
-    todo: "bg-blue-500",
-    in_progress: "bg-amber-500",
-    completed: "bg-emerald-500",
-    on_hold: "bg-rose-500"
+    high: "bg-[#FEE2E2] text-[#EB4C60]",
+    medium: "bg-[#FEF3C7] text-[#F4A423]",
+    low: "bg-[#D1FAE5] text-[#4CAF50]"
   };
 
   return (
     <div
-      className="mb-3 rounded-xl bg-white shadow-sm cursor-pointer border border-slate-100 hover:shadow-md transition overflow-hidden"
+      className="rounded-xl bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] cursor-pointer hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow border border-slate-100"
       draggable
+      dir="rtl"
     >
-      {/* Top accent bar */}
-      <div className={`h-1 ${statusAccent[task.status]}`} />
+      {/* Header with priority badge and three dots */}
+      <div className="flex items-start justify-between mb-3">
+        <span className={`rounded-md px-3 py-1 text-xs font-semibold ${priorityColor[task.priority]}`}>
+          {priorityLabel[task.priority]}
+        </span>
+        <button
+          type="button"
+          className="cursor-grab active:cursor-grabbing p-0.5 hover:bg-slate-50 rounded transition-colors"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <MenuDotsIcon />
+        </button>
+      </div>
 
-      <div className="p-4">
-        {/* Header with priority badge and menu */}
-        <div className="flex items-center justify-between mb-3">
-          <span className={`rounded-md px-2.5 py-1 text-xs font-medium ${priorityColor[task.priority]}`}>
-            {priorityLabel[task.priority]}
-          </span>
-          <button
-            type="button"
-            className="text-slate-400 hover:text-slate-600 p-1"
-            onClick={(e) => {
-              e.stopPropagation();
-              // Menu action
-            }}
-          >
-            <MenuDotsIcon />
-          </button>
-        </div>
+      {/* Title */}
+      <h3 className="mb-2 font-bold text-slate-900 text-[15px] leading-snug line-clamp-2">
+        {task.title}
+      </h3>
 
-        {/* Title */}
-        <h3 className="mb-2 font-semibold text-slate-900 text-sm line-clamp-1">{task.title}</h3>
+      {/* Description */}
+      <p className="mb-2 text-[13px] text-slate-500 leading-relaxed line-clamp-2">
+        {task.description}
+      </p>
 
-        {/* Description */}
-        <p className="mb-2 text-xs text-slate-500 line-clamp-2">{task.description}</p>
+      {/* Category/Project */}
+      <p className="mb-3 text-[12px] text-slate-400 line-clamp-1">
+        {task.project}
+      </p>
 
-        {/* Project name */}
-        <p className="mb-3 text-xs text-slate-400 line-clamp-1">{task.project}</p>
+      {/* Date with calendar icon */}
+      <div className="flex items-center justify-end gap-1.5 text-slate-500 text-[13px] mb-4">
+        <span>{task.dueDate}</span>
+        <CalendarIcon />
+      </div>
 
-        {/* Date */}
-        <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-3">
-          <CalendarIcon />
-          <span>{task.dueDate}</span>
-        </div>
-
-        {/* Footer with avatar and attachment count */}
-        <div className="flex items-center justify-between pt-2 border-t border-slate-100">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center text-white text-xs font-medium">
-              {task.assignee.charAt(0)}
-            </div>
-            <span className="text-xs text-slate-700 font-medium">{task.assignee}</span>
+      {/* Footer with icons and avatar */}
+      <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+        <div className="flex items-center gap-3">
+          {/* Comment count */}
+          <div className="flex items-center gap-1 text-slate-400">
+            <CommentIcon />
+            <span className="text-xs">2</span>
           </div>
-          <div className="flex items-center gap-1 text-slate-400 text-xs">
+          {/* Attachment count */}
+          <div className="flex items-center gap-1 text-slate-400">
             <AttachmentIcon />
-            <span>3</span>
+            <span className="text-xs">3</span>
           </div>
+        </div>
+
+        {/* Avatar with initials */}
+        <div className="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-white text-xs font-semibold">
+          {task.assignee.split(' ').map(n => n.charAt(0)).join('')}
         </div>
       </div>
     </div>
   );
 };
-
-
