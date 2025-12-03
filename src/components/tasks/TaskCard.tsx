@@ -46,8 +46,8 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     medium: "bg-[#FEF3C7] text-[#C2410C]",
     low: "bg-[#D1FAE5] text-[#16A34A]"
   };
-
-  // Format date from YYYY-MM-DD to DD/MM/YYYY
+//new format date from YYYY-MM-DD to DD/MM/YYYY
+ 
   const formatDate = (dateStr: string): string => {
     const [year, month, day] = dateStr.split('-');
     return `${day}/${month}/${year}`;
