@@ -121,7 +121,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         </div>
       </div>
       {/* Avatar with initials - positioned at bottom-left */}
-      <div className="absolute bottom-[17px] left-[17px] w-6 h-6 rounded-full bg-[#182B49] flex items-center justify-center text-white text-[10px] font-medium font-Tajawal">
+      <div className="absolute left-[17px] w-6 h-6 rounded-full bg-[#182B49] flex items-center justify-center text-white text-[10px] font-medium font-Tajawal">
         {task.assignee.split(' ').map(n => n.charAt(0)).join('')}
       </div>
     </div>
